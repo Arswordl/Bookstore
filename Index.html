@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Phone Number and Screenshot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="tel"],
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Submit Your Number and Screenshot</h2>
+    <form id="submitForm" enctype="multipart/form-data">
+        <label for="phone">Phone Number (required):</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required placeholder="Enter your phone number">
+
+        <label for="screenshot">Payment Screenshot (required):</label>
+        <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
+
+        <input type="submit" value="Submit and Continue">
+    </form>
+
+    <script>
+        document.getElementById('submitForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const phoneInput = document.getElementById('phone').value;
+            const screenshotInput = document.getElementById('screenshot').files[0];
+
+            if (phoneInput && screenshotInput) {
+                // Form is valid, redirect to the Telegram link
+                window.location.href = 'https://t.me/darkfilmc';
+            } else {
+                alert('Please complete the form before submitting.');
+            }
+        });
+    </script>
+
+</body>
+</html>
